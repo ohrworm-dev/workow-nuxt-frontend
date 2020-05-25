@@ -40,7 +40,7 @@ module.exports = {
      ** https://github.com/nuxt-community/vuetify-module
      */
     vuetify: {
-        optionsPath: './node_modules/vuetify/es5/util/colors',
+        optionsPath: './node_modules/vuetify/es5/util/colors.js',
         customVariables: ['~/assets/variables.scss'],
         theme: {
             dark: true,
