@@ -3,6 +3,12 @@ const colors = require('vuetify/es5/util/colors').default
 module.exports = {
     mode: 'universal',
     /*
+     ** Customize server port
+     */
+    server: {
+        port: process.env.PORT || 3000
+    },
+    /*
      ** Headers of the page
      */
     head: {
