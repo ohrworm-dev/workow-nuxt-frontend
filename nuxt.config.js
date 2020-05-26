@@ -7,7 +7,16 @@ module.exports = {
      */
     server: {
         port: process.env.PORT || 3000,
-        host: '0.0.0.0'
+        host: process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost'
+    },
+    router: {
+        routes: [
+            {
+                name: 'home',
+                path: '/',
+                component: 'pages/home/index.vue'
+            }
+        ]
     },
     /*
      ** Headers of the page
@@ -29,7 +38,7 @@ module.exports = {
     /*
      ** Global CSS
      */
-    css: [],
+    css: ['~/assets/css/main.scss'],
     /*
      ** Plugins to load before mounting the App
      */
@@ -41,7 +50,7 @@ module.exports = {
     /*
      ** Nuxt.js modules
      */
-    modules: [],
+    modules: ['@nuxtjs/apollo', '@nuxtjs/axios', '@nuxtjs/auth'],
     /*
      ** vuetify module configuration
      ** https://github.com/nuxt-community/vuetify-module
@@ -59,6 +68,32 @@ module.exports = {
                     warning: colors.amber.base,
                     error: colors.deepOrange.accent4,
                     success: colors.green.accent3
+                }
+            }
+        }
+    },
+    // Give apollo module options
+    apollo: {
+        // optional
+        watchLoading: '~/plugins/apollo-watch-loading-handler.js',
+        // optional
+        errorHandler: '~/plugins/apollo-error-handler.js',
+        // alternative: user path to config which returns exact same config options
+        test2: '~/plugins/my-alternative-apollo-config.js',
+        clientConfigs: {
+            default: {
+                httpEndpoint: 'https://vue-graphql-hasura-endpoint.herokuapp.com/v1/graphql'
+            }
+        }
+    },
+    //
+    auth: {
+        strategies: {
+            local: {
+                endpoints: {
+                    login: { url: '/api/auth/login', method: 'post', propertyName: 'token' },
+                    logout: { url: '/api/auth/logout', method: 'post' },
+                    user: { url: '/api/auth/user', method: 'get', propertyName: 'user' }
                 }
             }
         }
