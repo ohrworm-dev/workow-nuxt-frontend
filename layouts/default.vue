@@ -1,11 +1,14 @@
 <template>
     <v-app>
+        <!-- navbar -->
         <navbar-section />
         <v-content>
             <v-container>
+                <!-- pages injected here -->
                 <nuxt />
             </v-container>
         </v-content>
+        <!-- footer -->
     </v-app>
 </template>
 

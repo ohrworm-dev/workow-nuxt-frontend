@@ -9,15 +9,6 @@ module.exports = {
         port: process.env.PORT || 3000,
         host: process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost'
     },
-    router: {
-        routes: [
-            {
-                name: 'home',
-                path: '/',
-                component: 'pages/home/index.vue'
-            }
-        ]
-    },
     /*
      ** Headers of the page
      */
