@@ -1,9 +1,12 @@
 <template>
-    <section>
-        <!-- <navbar-section /> -->
+    <v-app>
         <navbar-section />
-        <router-view />
-    </section>
+        <v-content>
+            <v-container>
+                <nuxt />
+            </v-container>
+        </v-content>
+    </v-app>
 </template>
 
 <script>
@@ -15,18 +18,3 @@ export default {
     }
 }
 </script>
-
-<style lang="scss" scoped>
-#nav {
-    padding: 30px;
-
-    a {
-        font-weight: bold;
-        color: #2c3e50;
-        margin: 0 10px;
-        &.router-link-exact-active {
-            color: #42b983;
-        }
-    }
-}
-</style>

@@ -58,7 +58,7 @@ module.exports = {
     vuetify: {
         customVariables: ['~/assets/variables.scss'],
         theme: {
-            dark: true,
+            dark: false,
             themes: {
                 dark: {
                     primary: colors.blue.darken2,
@@ -92,7 +92,7 @@ module.exports = {
             local: {
                 endpoints: {
                     login: { url: '/api/auth/login', method: 'post', propertyName: 'token' },
-                    logout: { url: '/api/auth/logout', method: 'post' },
+                    logout: { url: '/api/auth/logout', method: 'delete' },
                     user: { url: '/api/auth/user', method: 'get', propertyName: 'user' }
                 }
             }
