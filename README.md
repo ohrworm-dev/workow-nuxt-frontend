@@ -22,3 +22,8 @@ $ npm run generate
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
 
 https://auth.nuxtjs.org/#getting-started
+
+nuxt auth
+nuxt apollo
+nuxt vuetify
+nuxt axios

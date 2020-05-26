@@ -72,6 +72,8 @@
 </template>
 <script>
 export default {
+    // refer to middleware/jobs.js
+    middleware: ['jobs'],
     data() {
         return {
             jobId: this.$route.query.id || '',
@@ -81,20 +83,21 @@ export default {
     },
     methods: {
         searchJobs() {
-            this.queryStr = this.searchStr
+            if (this.searchStr !== '') {
+                this.$router.push({ path: 'jobs', query: { search: this.searchStr } })
+                this.queryStr = this.searchStr
+                this.jobId = ''
+            }
         },
         viewJobInfo(id) {
             this.jobId = id
-            // change the browser url to reflect the selected job id (SEO)
+            // change the browser url without full page reload to reflect the selected job id (SEO)
             history.pushState(
                 {},
                 null,
                 `${this.$route.path}?search=${encodeURIComponent(this.$route.query.search)}&id=${encodeURIComponent(this.jobId)}`
             )
         }
-    },
-    mounted() {
-        console.log('mounted')
     }
 }
 </script>
