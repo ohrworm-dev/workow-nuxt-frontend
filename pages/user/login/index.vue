@@ -6,7 +6,8 @@
             <v-text-field v-model="login.username" label="User Name" required filled></v-text-field>
             <v-text-field v-model="login.password" label="Password" required filled type="password"></v-text-field>
             <div>
-                <v-btn type="submit">Submit</v-btn>
+                <v-btn type="button" v-on:click="register" style="float:left;">New User</v-btn>
+                <v-btn type="submit" style="float:right;">Login</v-btn>
             </div>
         </v-form>
     </section>
@@ -30,6 +31,9 @@ export default {
             } catch (err) {
                 console.log(err)
             }
+        },
+        register() {
+            this.$router.push({ path: '/user/register' })
         }
     }
 }

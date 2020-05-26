@@ -1,11 +1,13 @@
 <template>
     <section>
-        <v-form @submit="userLogin" :lazy-validation="lazy">
-            <v-text-field v-model="login.username" :counter="10" label="User Name" required></v-text-field>
-            <v-text-field v-model="login.password" label="Password" required></v-text-field>
-            <v-text-field v-model="login.password" label="Password" required></v-text-field>
+        <!-- submit.prevent is used to prevent the default submit reload page event -->
+        <v-form v-on:submit.prevent="userRegister">
+            <h1>Register Account</h1>
+            <v-text-field v-model="login.username" label="User Name" required filled></v-text-field>
+            <v-text-field v-model="login.password" label="Password" required filled type="password"></v-text-field>
+            <v-text-field v-model="login.confimPass" label="Password" required filled type="password"></v-text-field>
             <div>
-                <button type="submit">Submit</button>
+                <v-btn type="submit">Submit</v-btn>
             </div>
         </v-form>
     </section>
@@ -15,7 +17,6 @@
 export default {
     data() {
         return {
-            lazy: false,
             login: {
                 username: '',
                 password: '',
@@ -35,9 +36,16 @@ export default {
     }
 }
 </script>
+
 <style lang="scss" scoped>
 .v-form {
     width: 50%;
-    margin: auto;
+    margin: 200px auto auto auto;
+}
+section {
+    display: flex;
+}
+h1 {
+    margin-bottom: 30px;
 }
 </style>

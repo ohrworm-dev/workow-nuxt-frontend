@@ -1,10 +1,13 @@
 <template>
     <v-app-bar id="nav" fixed app>
         <nuxt-link to="/">Home</nuxt-link>
-        <nuxt-link v-if="!$auth.loggedIn" to="/login">Login</nuxt-link>
-        <div v-else>
-            {{ $auth.user.email }}
-            <v-btn v-on:click="$auth.logout()">Logout</v-btn>
+        <nuxt-link class="login" v-if="!$auth.loggedIn" to="/user/login">Login</nuxt-link>
+        <div v-else class="auth-options">
+            <nuxt-link to="/user/profile">My Profile</nuxt-link>
+            <div class="logout">
+                <span>Welcome {{ $auth.user.email }}</span>
+                <v-btn v-on:click="$auth.logout()">Logout</v-btn>
+            </div>
         </div>
     </v-app-bar>
 </template>
@@ -20,6 +23,17 @@ export default {}
         margin: 0 10px;
         &.router-link-exact-active {
             color: #42b983;
+        }
+    }
+    .login,
+    .logout {
+        margin-left: auto;
+    }
+    .auth-options {
+        width: 100%;
+        display: flex;
+        .v-btn {
+            height: 20px;
         }
     }
 }
