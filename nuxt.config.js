@@ -20,7 +20,12 @@ module.exports = {
      **
      */
     proxy: {
-        '/': isProduction ? hostConfig.development.url : hostConfig.production.url
+        '/api': {
+            target: isProduction ? hostConfig.development.url : hostConfig.production.url,
+            pathRewrite: {
+                '^/api': '/'
+            }
+        }
     },
     /*
      ** Headers of the page
