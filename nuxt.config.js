@@ -31,7 +31,7 @@ module.exports = {
     /*
      ** Plugins to load before mounting the App
      */
-    plugins: ['~/plugins/tailwind.js'],
+    plugins: [],
     /*
      ** Nuxt.js dev-modules
      */
