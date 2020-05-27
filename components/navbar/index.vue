@@ -19,14 +19,19 @@
                 <nuxt-link class="login" v-if="!$auth.loggedIn" to="/user/login">Login</nuxt-link>
                 <div v-else>
                     <span>Welcome {{ $auth.user.email }}</span>
-                    <button class="logout" v-on:click="$auth.logout()">Logout</button>
+                    <button class="logout" v-on:click="LOGOUT_USER">Logout</button>
                 </div>
             </div>
         </div>
     </nav>
 </template>
 <script>
-export default {}
+import { mapActions } from 'vuex'
+export default {
+    methods: {
+        ...mapActions(['LOGOUT_USER'])
+    }
+}
 </script>
 
 <style lang="scss" scoped>

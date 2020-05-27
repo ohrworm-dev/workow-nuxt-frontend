@@ -4,6 +4,6 @@
         "port": 3000
     },
     "production": {
-        "url": "https://vue-graphql-frontend.herokuapp.com/"
+        "url": "https://workow-nuxt-frontend.herokuapp.com/"
     }
 }

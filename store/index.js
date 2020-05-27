@@ -1,11 +1,7 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import __auth from './modules/auth'
+import __api from './modules/api'
 
-Vue.use(Vuex)
-
-export const store = new Vuex.Store({
-    state: {},
-    mutations: {},
-    actions: {},
-    modules: {}
-})
+export const modules = {
+    __auth,
+    __api
+}

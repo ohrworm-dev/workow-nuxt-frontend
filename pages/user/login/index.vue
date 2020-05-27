@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
     data() {
         return {
@@ -30,13 +31,9 @@ export default {
         }
     },
     methods: {
-        async userLogin() {
-            try {
-                let response = await this.$auth.loginWith('local', { data: this.login })
-                console.log(response)
-            } catch (err) {
-                console.log(err)
-            }
+        ...mapActions(['LOGIN_USER']),
+        userLogin() {
+            this.LOGIN_USER(this.login)
         },
         register() {
             this.$router.push({ path: '/user/register' })
