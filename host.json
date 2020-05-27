@@ -1,0 +1,9 @@
+{
+    "development": {
+        "url": "http://localhost",
+        "port": 3000
+    },
+    "production": {
+        "url": "https://vue-graphql-frontend.herokuapp.com/"
+    }
+}

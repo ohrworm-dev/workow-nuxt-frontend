@@ -1,11 +1,19 @@
+const hostConfig = require('./host.json')
+
 module.exports = {
     mode: 'universal',
     /*
      ** Customize server port
      */
     server: {
-        port: process.env.PORT || 3000,
+        port: process.env.PORT || hostConfig.development.port,
         host: process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost'
+    },
+    /*
+     **
+     */
+    axios: {
+        baseUrl: '/'
     },
     /*
      ** Headers of the page
@@ -63,9 +71,9 @@ module.exports = {
         strategies: {
             local: {
                 endpoints: {
-                    login: { url: 'api/auth/login', method: 'post', propertyName: 'token' },
-                    logout: { url: 'api/auth/logout', method: 'delete' },
-                    user: { url: 'api/auth/user', method: 'get', propertyName: 'user' }
+                    login: { url: '/api/auth/login', method: 'post', propertyName: 'token' },
+                    logout: { url: '/api/auth/logout', method: 'delete' },
+                    user: { url: '/api/auth/user', method: 'get', propertyName: 'user' }
                 }
             }
         }
