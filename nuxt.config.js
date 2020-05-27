@@ -1,4 +1,5 @@
 const hostConfig = require('./host.json')
+const isProduction = (() => process.env.NODE_ENV === 'production')()
 
 module.exports = {
     mode: 'universal',
@@ -7,13 +8,19 @@ module.exports = {
      */
     server: {
         port: process.env.PORT || hostConfig.development.port,
-        host: process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost'
+        host: isProduction ? '0.0.0.0' : 'localhost'
     },
     /*
      **
      */
     axios: {
-        baseUrl: '/'
+        proxy: true
+    },
+    /*
+     **
+     */
+    proxy: {
+        '/': isProduction ? hostConfig.development.url : hostConfig.production.url
     },
     /*
      ** Headers of the page
@@ -47,7 +54,7 @@ module.exports = {
     /*
      ** Nuxt.js modules
      */
-    modules: ['@nuxtjs/apollo', '@nuxtjs/axios', '@nuxtjs/auth'],
+    modules: ['@nuxtjs/apollo', '@nuxtjs/axios', '@nuxtjs/auth', '@nuxtjs/proxy'],
     // Give apollo module options
     apollo: {
         // optional
