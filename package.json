@@ -14,13 +14,16 @@
         "@nuxtjs/apollo": "^4.0.1-rc.1",
         "@nuxtjs/auth": "^4.9.1",
         "@nuxtjs/axios": "^5.10.3",
-        "@nuxtjs/vuetify": "^1.11.2",
         "cross-env": "^5.2.0",
         "express": "^4.16.4",
         "graphql-tag": "^2.10.3",
         "nuxt": "^2.0.0"
     },
     "devDependencies": {
-        "nodemon": "^1.18.9"
+        "@nuxtjs/tailwindcss": "^2.0.0",
+        "node-sass": "^4.14.1",
+        "nodemon": "^1.18.9",
+        "sass-loader": "^8.0.2",
+        "vue-tailwind": "^0.4.6"
     }
 }

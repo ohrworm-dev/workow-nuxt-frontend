@@ -1,13 +1,15 @@
 <template>
     <section>
         <!-- Cute tiny form -->
-        <v-form v-on:submit.prevent="searchJobs">
-            <h1>Search a job</h1>
-            <div>
-                <input v-model="searchStr" placeholder="Search" class="input" id="search" />
-                <v-btn type="submit">Search</v-btn>
+        <form v-on:submit.prevent="searchJobs" class="form-search">
+            <div class="form-head">Search Jobs</div>
+            <div class="inline-flex">
+                <input class="txt-input mr-5" v-model="searchStr" placeholder="Search" id="search" size="sm" />
+                <button class="bg-blue-500 p-2 border rounded hover:bg-blue-700 text-white" variant="primary" size="sm" type="submit">
+                    Search
+                </button>
             </div>
-        </v-form>
+        </form>
     </section>
 </template>
 
@@ -29,7 +31,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.v-form {
+.form {
     > h1 {
         margin-bottom: 30px;
     }

@@ -1,10 +1,10 @@
 <template>
     <section>
-        <div class="search-container">
-            <v-form v-on:submit.prevent="searchJobs">
-                <input v-model="searchStr" placeholder="Search" class="input" id="search" />
-                <v-btn type="submit">Search</v-btn>
-            </v-form>
+        <div class="pt-4 pb-4 w-full">
+            <form v-on:submit.prevent="searchJobs" class="form-jobs">
+                <input class="txt-input mr-5" v-model="searchStr" placeholder="Search" id="search" />
+                <button class="bg-blue-500 p-2 border rounded hover:bg-blue-700 text-white" type="submit">Search</button>
+            </form>
         </div>
 
         <!-- Apollo watched Graphql query -->
@@ -17,21 +17,29 @@
                 <div v-else-if="error" class="error apollo">An error occured</div>
 
                 <!-- Result -->
-                <div v-else-if="data && data.job_search && data.job_search.length > 0" class="row">
-                    <div class="job-list col-md-6">
-                        <div class="job-card-container" v-for="(job, index) in data.job_search" :key="index">
-                            <v-card>
-                                <v-card-title class="job-card-headline">{{ job.position_name }}</v-card-title>
-
-                                <v-card-subtitle class="job-card-sub">{{ job.description }}...</v-card-subtitle>
-
-                                <v-card-actions>
-                                    <v-btn click text v-on:click="viewJobInfo(job.id)">View Job</v-btn>
-                                </v-card-actions>
-                            </v-card>
+                <div v-else-if="data && data.job_search && data.job_search.length > 0" class="flex">
+                    <div class="job-list p-5">
+                        <div
+                            class="w-full border border-gray-400 rounded overflow-hidden shadow-lg mt-4 mb-4"
+                            v-for="(job, index) in data.job_search"
+                            :key="index"
+                        >
+                            <div class="px-6 py-4">
+                                <div class="font-bold text-xl mb-2">{{ job.position_name }}</div>
+                                <p class="text-gray-700 text-base text-left">{{ job.description }}<b>...</b></p>
+                            </div>
+                            <div class="px-6 py-4">
+                                <button
+                                    class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
+                                    v-on:click="viewJobInfo(job.id)"
+                                >
+                                    View Job
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    <div class="job-info col-md-6">
+
+                    <div class="job-info">
                         <ApolloQuery :query="require('@/graphql/queries/JobInfoQry.gql')" :variables="{ id: jobId }">
                             <template slot-scope="{ result: { loading, error, data } }">
                                 <!-- Loading -->
@@ -42,13 +50,13 @@
 
                                 <!-- Result -->
                                 <div v-else-if="data && data.jobs_by_pk" class="row">
-                                    <div class="job-info-container">
+                                    <div class="job-info-container rounded p-5 m-5 border">
                                         <div class="job-info-title">{{ data.jobs_by_pk.position_name }}</div>
-                                        <div class="row">
-                                            <div class="job-info-loc col-md-6">
+                                        <div class="w-full flex pt-5 pb-5">
+                                            <div class="job-info-loc w-1/2 text-left">
                                                 {{ data.jobs_by_pk.location }}
                                             </div>
-                                            <div class="job-info-url col-md-6">
+                                            <div class="job-info-url w-1/2 text-right">
                                                 <a :href="data.jobs_by_pk.url" target="_blank">Original Post</a>
                                             </div>
                                         </div>
@@ -114,9 +122,6 @@ label {
     display: block;
     margin-bottom: 6px;
 }
-.search-container {
-    padding: 15px 0;
-}
 .input {
     font-family: inherit;
     font-size: inherit;
@@ -142,15 +147,18 @@ label {
     }
     &-list,
     &-info {
-        padding: 0 40px;
-        overflow: auto;
         height: calc(100vh - 160px);
+        @apply block w-1/2 overflow-auto;
+        line-height: 1.75rem;
         &-desc {
             text-align: left;
         }
         &-title {
             font-size: 1.5rem;
             font-weight: bold;
+        }
+        &-url {
+            @apply text-blue-400;
         }
     }
 }

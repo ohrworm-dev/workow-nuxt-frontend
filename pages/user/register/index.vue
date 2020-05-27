@@ -1,15 +1,25 @@
 <template>
     <section>
         <!-- submit.prevent is used to prevent the default submit reload page event -->
-        <v-form v-on:submit.prevent="userRegister">
-            <h1>Register Account</h1>
-            <v-text-field v-model="login.username" label="User Name" required filled></v-text-field>
-            <v-text-field v-model="login.password" label="Password" required filled type="password"></v-text-field>
-            <v-text-field v-model="login.confimPass" label="Password" required filled type="password"></v-text-field>
+        <form class="form-register" v-on:submit.prevent="userRegister">
+            <div class="form-head">Register Account</div>
+            <label for="user-name" class="form-label">User Name</label>
+            <input class="txt-input mb-5" id="user-name" v-model="login.username" label="User Name" placeholder="User Name" />
+            <label for="password" class="form-label">Password</label>
+            <input class="txt-input mb-5" id="password" v-model="login.password" label="Password" type="password" placeholder="Password" />
+            <label for="confirm-pass" class="form-label">Confirm Password</label>
+            <input
+                class="txt-input mb-5"
+                v-model="login.confimPass"
+                id="confirm-pass"
+                label="Password"
+                placeholder="Confirm Password"
+                type="password"
+            />
             <div>
-                <v-btn type="submit">Submit</v-btn>
+                <button class="bg-blue-500 p-2 border rounded hover:bg-blue-700 text-white" type="submit">Submit</button>
             </div>
-        </v-form>
+        </form>
     </section>
 </template>
 
@@ -37,15 +47,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.v-form {
-    width: 50%;
-    margin: 200px auto auto auto;
-}
-section {
-    display: flex;
-}
-h1 {
-    margin-bottom: 30px;
-}
-</style>
+<style lang="scss" scoped></style>
