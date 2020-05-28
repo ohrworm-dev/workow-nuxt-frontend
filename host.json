@@ -5,5 +5,9 @@
     },
     "production": {
         "url": "https://workow-nuxt-frontend.herokuapp.com/"
+    },
+    "graphql": {
+        "url": "https://vue-graphql-hasura-endpoint.herokuapp.com/v1/graphql",
+        "secret": "3PxQam_t9Qs&e!FdB27RT&qngZ#C#%3dRXQFA87jE+Z5LX85Z_-#T5FC$qP5ThacNja2auCfkB4gQ&sGjg!fnccE9%X*s2drR#VdmuB=eJqzw?E5g4b8z2hM2GKE&9Qg"
     }
 }

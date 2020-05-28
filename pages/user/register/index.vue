@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
     data() {
         return {
@@ -35,13 +36,9 @@ export default {
         }
     },
     methods: {
-        async userRegister() {
-            try {
-                this.$axios.request()
-                console.log(response)
-            } catch (err) {
-                console.log(err)
-            }
+        ...mapActions(['REGISTER_USER']),
+        userRegister() {
+            this.REGISTER_USER(this.register)
         }
     }
 }

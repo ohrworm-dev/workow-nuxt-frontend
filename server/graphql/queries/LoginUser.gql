@@ -1,0 +1,2 @@
+# query on user table where user_name = <user_name> && password_hash = <password_hash>
+# return user data

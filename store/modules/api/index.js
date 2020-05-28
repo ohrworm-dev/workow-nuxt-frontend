@@ -1,5 +1,5 @@
 const actions = {
-    API_REGISTER_USER: ({}, form) => {
+    API_REGISTER_USER: function({}, form) {
         return this.$axios.request('/user/register', {
             data: form
         })

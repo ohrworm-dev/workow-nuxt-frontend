@@ -1,5 +1,7 @@
 # workow-nuxt-frontend
 
+[Live Demo](https://workow-nuxt-frontend.herokuapp.com/)
+
 > My neat Nuxt.js project
 
 ## VScode liveshare

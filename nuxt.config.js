@@ -70,7 +70,7 @@ module.exports = {
         test2: '~/plugins/my-alternative-apollo-config.js',
         clientConfigs: {
             default: {
-                httpEndpoint: 'https://vue-graphql-hasura-endpoint.herokuapp.com/v1/graphql'
+                httpEndpoint: hostConfig.graphql.url
             }
         }
     },

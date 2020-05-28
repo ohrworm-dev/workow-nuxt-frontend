@@ -90,3 +90,5 @@ sw.*
 *.swp
 
 .vsls.json
+
+secrets.json
